@@ -11,15 +11,31 @@ export async function generateMetadata({
   const { slug } = await params;
   const { data: product } = await supabase
     .from("products")
-    .select("name, metaTitle, metaDesc, description")
+    .select("name, metaTitle, metaDesc, description, images:product_images(url)")
     .eq("slug", slug)
     .single();
 
   if (!product) return { title: "Product Not Found" };
 
+  const title = product.metaTitle ?? product.name;
+  const description = product.metaDesc ?? product.description?.slice(0, 160);
+  const imageUrl = (product.images as { url: string }[] | null)?.[0]?.url;
+
   return {
-    title: product.metaTitle ?? product.name,
-    description: product.metaDesc ?? product.description?.slice(0, 160),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      images: imageUrl ? [{ url: imageUrl, width: 800, height: 800, alt: title }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: imageUrl ? [imageUrl] : undefined,
+    },
   };
 }
 

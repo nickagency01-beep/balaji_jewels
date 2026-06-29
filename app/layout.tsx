@@ -7,6 +7,7 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import AuthProvider from "@/components/layout/AuthProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? "https://balajijewels.com"),
   title: { default: "BALAJI — Fine Jewelry", template: "%s | BALAJI" },
   description:
     "Discover BALAJI's collection of handcrafted fine jewelry. Rings, necklaces, earrings, and bracelets in gold, platinum, and precious gemstones.",
@@ -15,6 +16,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "BALAJI Fine Jewelry",
+    title: "BALAJI — Fine Jewelry",
+    description:
+      "Discover BALAJI's collection of handcrafted fine jewelry. Rings, necklaces, earrings, and bracelets in gold, platinum, and precious gemstones.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BALAJI — Fine Jewelry",
+    description:
+      "Discover BALAJI's collection of handcrafted fine jewelry. Rings, necklaces, earrings, and bracelets in gold, platinum, and precious gemstones.",
   },
 };
 
