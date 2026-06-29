@@ -7,13 +7,25 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSending(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setSending(false);
-    setSent(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSent(true);
+    } catch {
+      setError("Something went wrong. Please email us directly at hello@balajijewels.com");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -96,7 +108,7 @@ export default function ContactPage() {
                     Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                   </p>
                   <button
-                    onClick={() => { setSent(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
+                    onClick={() => { setSent(false); setError(""); setForm({ name: "", email: "", subject: "", message: "" }); }}
                     className="btn-primary mt-6"
                   >
                     Send Another Message
@@ -176,6 +188,11 @@ export default function ContactPage() {
                       }}
                     />
                   </div>
+                  {error && (
+                    <p className="text-sm rounded p-3" style={{ background: "#fef2f2", color: "#b91c1c" }}>
+                      {error}
+                    </p>
+                  )}
                   <button type="submit" disabled={sending} className="btn-primary w-full">
                     {sending ? "Sending…" : "Send Message"}
                   </button>
