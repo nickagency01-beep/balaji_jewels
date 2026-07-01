@@ -126,7 +126,7 @@ export type InquiryStatus = "New" | "In Progress" | "Completed";
 export type ProjectType = "Ring" | "Necklace" | "Earrings" | "Bracelet" | "Other";
 export type Material = "14k Gold" | "18k Gold" | "Platinum" | "Heirloom Metal";
 export type Gemstone = "Diamond" | "Sapphire" | "Emerald" | "Ruby" | "Metal Only";
-export type BudgetRange = "$1k–$3k" | "$3k–$5k" | "$5k–$10k" | "$10k+";
+export type BudgetRange = "₹50k–₹1L" | "₹1L–₹3L" | "₹3L–₹10L" | "₹10L+";
 export type Timeline = "ASAP" | "4–8 weeks" | "No Rush";
 
 export interface InquiryFormData {

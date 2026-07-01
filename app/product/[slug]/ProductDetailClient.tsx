@@ -419,7 +419,7 @@ export default function ProductDetailClient({ product, related }: Props) {
               {[
                 { icon: Shield, label: "Certified", sub: "GIA / IGI" },
                 { icon: RefreshCw, label: "30-Day", sub: "Returns" },
-                { icon: Package, label: "Free Ship", sub: "on $5,000+" },
+                { icon: Package, label: "Free Ship", sub: "on ₹5,000+" },
               ].map(({ icon: Icon, label, sub }) => (
                 <div key={label} className="text-center">
                   <Icon className="w-5 h-5 mx-auto mb-1" style={{ color: "var(--emerald-light)" }} />
@@ -462,7 +462,7 @@ export default function ProductDetailClient({ product, related }: Props) {
               )}
 
               <AccordionItem title="Shipping & Returns">
-                <p>Free standard shipping on orders above $5,000. Express delivery available.</p>
+                <p>Free standard shipping on orders above ₹5,000. Express delivery available.</p>
                 <p className="mt-2">30-day returns accepted for unworn items in original condition. Custom and engraved pieces are non-returnable.</p>
               </AccordionItem>
 

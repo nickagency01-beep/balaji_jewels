@@ -79,7 +79,7 @@ export default function Header() {
           color: transparent ? "var(--gold-light)" : "var(--gold-deep)",
         }}
       >
-        ✦ Free shipping on orders over $5,000 ✦ Complimentary gift wrapping ✦
+        ✦ Free shipping on orders over ₹5,000 ✦ Complimentary gift wrapping ✦
       </div>
 
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
